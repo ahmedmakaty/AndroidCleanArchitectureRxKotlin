@@ -12,6 +12,7 @@ import dagger.android.HasActivityInjector
 import dagger.android.HasServiceInjector
 import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
+import kotlin.math.sign
 
 class App : Application(), HasActivityInjector, HasSupportFragmentInjector, HasServiceInjector {
 
@@ -24,9 +25,17 @@ class App : Application(), HasActivityInjector, HasSupportFragmentInjector, HasS
     @Inject
     lateinit var serviceDispatchingAndroidInjector: DispatchingAndroidInjector<Service>
 
+    companion object {
+        lateinit var sInstance: Application
+
+        fun getInstance(): Application {
+            return sInstance
+        }
+    }
+
     override fun onCreate() {
         super.onCreate()
-
+        sInstance = this
         DaggerAppComponent.builder().application(this).build().inject(this)
     }
 

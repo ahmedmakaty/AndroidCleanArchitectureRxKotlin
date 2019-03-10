@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">KotlinRun</string>
     <string name="default_Country">SA</string>
-    <string name="hello">Hello, world</string>
+    <string name="hello">مرحبا</string>
 </resources>
